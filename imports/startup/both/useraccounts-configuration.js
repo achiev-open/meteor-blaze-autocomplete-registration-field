@@ -17,3 +17,10 @@ AccountsTemplates.configureRoute('signUp', {
 	name: 'join',
 	path: '/join',
 });
+
+AccountsTemplates.addField({
+	_id: "address",
+	placeholder: "Your full address",
+	type: "text",
+	required: true
+});
