@@ -23,7 +23,10 @@
                 {{displayName}} {{#unless required}}{{optionalText}}{{/unless}}  <small>(Our custom template)</small>
             </label>
         {{/if}}
-        <input type="{{type}}" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off">
+
+        {{> AutocompleteInput placeholder=placeholder parentId=(concat 'at-field-' _id)}}
+        <input type="hidden" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off">
+
         {{#if hasIcon}}
             <span class="{{iconClass}}"></span>
         {{/if}}

@@ -1,0 +1,18 @@
+<template name="AutocompleteInput">
+    <div class="autocomplete">
+        <input type="text"
+               placeholder="{{placeholder}}"
+               autocapitalize="none"
+               autocorrect="off">
+
+        {{#if suggestions}}
+            <div class="autocomplete-suggestions">
+                {{#each suggestion in suggestions }}
+                    <div class="autocomplete-suggestion" data-suggestion-id="{{@index}}">
+                        {{suggestion.properties.name}}, {{suggestion.properties.context}}
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+</template>

@@ -1,6 +1,8 @@
-import "./accounts-template.html";
 import {Template} from "meteor/templating";
 import { AccountsTemplates } from 'meteor/useraccounts:core';
+
+import "../components/autocomplete-input/autocomplete-input.js";
+import "./accounts-template.html";
 
 Template.atInput.helpers({
 	templateName: function() {
@@ -21,4 +23,24 @@ Template.atInput.helpers({
 });
 
 Template.atAutocompleteInput.helpers(AccountsTemplates.atInputHelpers);
-Template.atAutocompleteInput.events(AccountsTemplates.atInputEvents);
+
+Template.atAutocompleteInput.helpers({
+	'concat': function() {
+		return Array.prototype.slice.call(arguments, 0, -1).join('');
+	}
+});
+
+Template.atAutocompleteInput.events({
+	'focusin input'(event, template) {
+		event.stopImmediatePropagation();
+	},
+	'focusout input, change select'(event, t) {
+		event.stopImmediatePropagation();
+	},
+	'onSelected'(event, template, data) {
+		let field = Template.currentData();
+		field.clearStatus();
+		field.setValue(template, data ? data.properties.name : "");
+	}
+});
+
