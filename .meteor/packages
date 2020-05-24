@@ -27,3 +27,5 @@ ddp-rate-limiter
 underscore
 accounts-password
 useraccounts:unstyled
+useraccounts:flow-routing
+aldeed:template-extension

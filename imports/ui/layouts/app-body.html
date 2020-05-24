@@ -1,6 +1,13 @@
 <template name="App_body">
     <header>
         <a href="/">Accueil</a>
+
+        {{#if currentUser}}
+            <a class="js-logout">Deconnexion</a>
+        {{else}}
+            <a href="/signin">Connexion</a>
+            <a href="/join">Inscription</a>
+        {{/if}}
     </header>
     <div id="container">
         {{> Template.dynamic template=main}}
