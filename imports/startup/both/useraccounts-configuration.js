@@ -1,6 +1,9 @@
 import { AccountsTemplates } from 'meteor/useraccounts:core';
 
+AccountsTemplates.INPUT_TYPES.push("autocomplete");
+
 AccountsTemplates.configure({
+	showLabels: true,
 	defaultTemplate: 'Auth_page',
 	defaultLayout: 'App_body',
 	defaultContentRegion: 'main',
@@ -21,6 +24,6 @@ AccountsTemplates.configureRoute('signUp', {
 AccountsTemplates.addField({
 	_id: "address",
 	placeholder: "Your full address",
-	type: "text",
+	type: "autocomplete",
 	required: true
 });
